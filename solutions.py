@@ -6,10 +6,7 @@ def anagram(s1, s2):
     return sorted(s1) == sorted(s2)
 
 def Question1(t, s):
-    #gets length of strings 
-    t_len = len(t)
-    s_len = len(s)
-    t_sort = sorted(t)
+    #uses built-in any to check if any anagram of t is substring of s
     return any(anagram(s[i: i+len(t)], t)
                  for i in range(len(s)-len(t)+ 1))
 
