@@ -4,6 +4,9 @@ Five technical interviewing questions on a variety of topics discussed in the te
 ## Question 1
 Given two strings s and t, determine whether some anagram of t is a substring of s. For example: if s = "udacity" and t = "ad", then the function returns True. Your function definition should look like: question1(s, t) and return a boolean True or False.
 
+Source: https://stackoverflow.com/questions/32069724/anagram-of-string-2-is-substring-of-string-1
+        https://stackoverflow.com/questions/43103433/python-2-7-finding-if-some-anagram-of-one-string-is-a-substring-of-another       
+
 ## Question 2
 Given a string a, find the longest palindromic substring contained in a. Your function definition should look like question2(a), and return a string.
 
