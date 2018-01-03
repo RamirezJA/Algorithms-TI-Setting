@@ -11,6 +11,9 @@ Source: https://stackoverflow.com/questions/32069724/anagram-of-string-2-is-subs
 ## Question 2
 Given a string a, find the longest palindromic substring contained in a. Your function definition should look like question2(a), and return a string.
 
+Source: https://www.geeksforgeeks.org/longest-palindromic-substring-set-2/
+        https://www.geeksforgeeks.org/manachers-algorithm-linear-time-longest-palindromic-substring-part-1/
+
 ## Question 3
 Given an undirected graph G, find the minimum spanning tree within G. A minimum spanning tree connects all vertices in a graph with the smallest possible total weight of edges. Your function should take in and return an adjacency list structured like this:
 ```
