@@ -1,3 +1,4 @@
+#Question 1
 def anagram(s1, s2):
     #converting both strings into lists
     s1 = list(s1)
@@ -29,3 +30,26 @@ print Question1("uiy", "udacity")
 # Test case 5 with empty string
 print Question1("", "udacity")
 #True
+
+#Question 2
+#creates an empty dictionary
+store = {}
+def question2(string):
+    if string in store.keys():
+        return store[string]
+    #returns string if its a palindrome
+    if string == string[::-1]:
+        return string
+    else:
+        #goes trough string items from left to right
+        left = question2(string[:-1])
+        right = question2(string[1:])
+        iterate = [left, right]
+        #finding max using len
+        store[string] = max(iterate, key=len) 
+        return store[string]
+ 
+print question2('forgeeksskeegfor')
+print question2('alskdjfj laksjd flkajs racecar idk lol')
+
+# http://codegist.net/code/find-longest-palindrome-in-a-store-python/
