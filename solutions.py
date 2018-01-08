@@ -53,3 +53,56 @@ print question2('forgeeksskeegfor')
 print question2('alskdjfj laksjd flkajs racecar idk lol')
 
 # http://codegist.net/code/find-longest-palindrome-in-a-store-python/
+
+#Question 3 using Kruskal algorithm
+parent = dict()
+sort = dict()
+#creates a batch of vertices
+def create_batch(vert):
+    parent[vert] = vert
+    sort[vert] = 0
+#locates vertices
+def locate(vert):
+    if parent[vert] != vert:
+        parent[vert] = locate(parent[vert])
+    return parent[vert]
+#creates unions
+def union(vert1, vert2):
+    root1 = locate(vert1)
+    root2 = locate(vert2)
+    if root1 != root2:
+        if sort[root1] > sort[root2]:
+            parent[root2] = root1
+        else:
+            parent[root1] = root2
+            if sort[root1] == sort[root2]: sort[root2] += 1
+
+#Using Kruskal algorithm
+def question3(G):
+    for vert in G['verts']:
+        create_batch(vert)
+
+    minspantree = set()
+    edges = list(G['edges'])
+    edges.sort()
+    for edge in edges:
+        weight, vert1, vert2 = edge
+        if locate(vert1) != locate(vert2):
+            union(vert1, vert2)
+            minspantree.add(edge)
+    return sorted(minspantree)
+
+G = {
+        'verts': ['A', 'B', 'C', 'D', 'E'],
+        'edges': set([
+            (2, 'A', 'B'),
+            (3, 'B', 'D'),
+            (4, 'D', 'E'),
+            (1, 'A', 'C'),
+            (3, 'C', 'E')
+            ])
+        }
+
+print(question3(G))
+
+#Attributioon:https://pythonexample.com/snippet/python/kruskalpy_sammyherring_python
