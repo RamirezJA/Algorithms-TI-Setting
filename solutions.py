@@ -105,4 +105,5 @@ G = {
 
 print(question3(G))
 
-#Attributioon:https://pythonexample.com/snippet/python/kruskalpy_sammyherring_python
+# Attributioon:https://pythonexample.com/snippet/python/kruskalpy_sammyherring_python
+# Attributioon: https://gist.github.com/vevurka/539d82eb0ba60c16aa8aa65610c627df  
