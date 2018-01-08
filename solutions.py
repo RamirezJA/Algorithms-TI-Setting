@@ -103,7 +103,54 @@ G = {
             ])
         }
 
-print(question3(G))
+print "Test case one"
+print(question3(G)) 
+#Expected Output [(1, 'A', 'C'), (2, 'A', 'B'), (3, 'B', 'D'), (3, 'C', 'E')]
 
-# Attributioon:https://pythonexample.com/snippet/python/kruskalpy_sammyherring_python
-# Attributioon: https://gist.github.com/vevurka/539d82eb0ba60c16aa8aa65610c627df  
+G = {
+        'verts': ['A', 'B', 'C', 'D', 'E'],
+        'edges': set([
+            (1, 'A', 'B'),
+            (1, 'B', 'D'),
+            (1, 'D', 'E'),
+            (1, 'A', 'C'),
+            (1, 'C', 'E')
+            ])
+        }
+
+print "test case two"
+print(question3(G)) 
+#Expected Output [(1, 'A', 'B'), (1, 'A', 'C'), (1, 'B', 'D'), (1, 'C', 'E')]
+
+
+G = {
+        'verts': ['A', 'B', 'C', 'D', 'E','F', 'G', 'H', 'I','J','K', 'L', 'N', 'O',],
+        'edges': set([
+            (1, 'A', 'B'),
+            (3, 'A', 'C'),
+            (2, 'B', 'E'),
+            (5, 'E', 'G'),
+            (1, 'G', 'I'),
+            (2, 'I', 'K'),
+            (4, 'K', 'N'),
+            (2, 'N', 'O'),
+            (5, 'O', 'L'),
+            (1, 'L', 'J'),
+            (3, 'J', 'H'),
+            (2, 'H', 'F'),
+            (1, 'F', 'D'),
+            (3, 'D', 'C')
+            ])
+        }
+
+print "test case three unusually long"
+print(question3(G))
+"""
+Expected Output [(1, 'A', 'B'), (1, 'F', 'D'), (1, 'G', 'I'), (1, 'L', 'J'), (2, 'B', 'E'), (2, 'H', 'F'), (2, 'I', 'K'),
+(2, 'N', 'O'), (3, 'A', 'C'), (3, 'D', 'C'), (3, 'J', 'H'), (4, 'K', 'N'), (5, 'E', 'G')]
+"""
+
+"""
+Attributioon: https://pythonexample.com/code/prim-minimum-spanning-tree-algorithm-python/
+              https://gist.github.com/vevurka/539d82eb0ba60c16aa8aa65610c627df  
+"""
