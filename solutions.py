@@ -48,9 +48,16 @@ def question2(string):
         #finding max using len
         store[string] = max(iterate, key=len) 
         return store[string]
- 
+
+#Test Case 1 
 print question2('forgeeksskeegfor')
+#Expected output: geeksskeeg
+#Test Case 2
 print question2('alskdjfj laksjd flkajs racecar idk lol')
+#Expected output: racecar
+#Test Case 3
+print question2('')
+#Expected output: blank
 
 # http://codegist.net/code/find-longest-palindrome-in-a-store-python/
 
