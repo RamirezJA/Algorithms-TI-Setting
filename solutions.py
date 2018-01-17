@@ -1,35 +1,51 @@
 #Question 1
-def anagram(s1, s2):
-    #converting both strings into lists
-    s1 = list(s1)
-    s2 = list(s2)
-    #sorting the elements of the list
-    return sorted(s1) == sorted(s2)
+def question1(s,t):
+    m = len(s)
+    n = len(t)
+    if m > n: return false
+    target = dict.fromkeys(s,0)
+    for c in s: target[c] += 1
 
-def Question1(t, s):
-    #uses built-in any to check if any anagram of t is substring of s
-    return any(anagram(s[i: i+len(t)], t)
-                 for i in range(len(s)-len(t)+ 1))
+    #process initial window
+    for i in range(m):
+        c = t[i]
+        if c in target:
+            target[c] -= 1
+    discrepancy = sum(abs(target[c]) for c in target)
+
+    #repeatedly check then slide:
+    for i in range(m,n):
+        if discrepancy == 0:
+            return True
+        else:
+            #first process letter from m steps ago from t
+            c = t[i-m]
+            if c in target:
+                target[c] += 1
+                if target[c] > 0: #just made things worse
+                    discrepancy +=1
+                else:
+                    discrepancy -=1
+            #now process new letter:
+            c = t[i]
+            if c in target:
+                target[c] -= 1
+                if target[c] < 0: #just made things worse
+                    discrepancy += 1
+                else:
+                    discrepancy -=1
+    #if you get to this stage:
+    return discrepancy == 0
 
 # Test case 1 checking for anagram in subject
-print Question1("ad", "udacity")
+print question1("ad", "udacity")
 #True
-
-# Test case 2 using words not in subject
-print Question1("qwr", "udacity")
-#False
-
-# Test case 3 using a word longer than the subject
-print Question1("cityadunreal", "udacity")
-#False
-
-# Test case 4 using words in subject but not in order
-print Question1("uiy", "udacity")
-#False
-
-# Test case 5 with empty string
-print Question1("", "udacity")
+# Test case 2 with empty string
+print question1("", "udacity")
 #True
+# Test case 3 using words in subject but not in order
+print question1("uiy", "udacity")
+#False
 
 #Question 2
 #creates an empty dictionary
