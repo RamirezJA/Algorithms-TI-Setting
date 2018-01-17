@@ -46,6 +46,9 @@ print question1("", "udacity")
 # Test case 3 using words in subject but not in order
 print question1("uiy", "udacity")
 #False
+# Test case 4 unusually long
+print question1("rove", "stack overflow is really cool")
+#True
 
 #Question 2
 #creates an empty dictionary
@@ -68,10 +71,10 @@ def question2(string):
 #Test Case 1 
 print question2('forgeeksskeegfor')
 #Expected output: geeksskeeg
-#Test Case 2
+#Test Case 2 unusually long
 print question2('alskdjfj laksjd flkajs racecar idk lol')
 #Expected output: racecar
-#Test Case 3
+#Test Case 3 blank
 print question2('')
 #Expected output: blank
 
