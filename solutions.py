@@ -177,3 +177,110 @@ Expected Output [(1, 'A', 'B'), (1, 'F', 'D'), (1, 'G', 'I'), (1, 'L', 'J'), (2,
 Attributioon: https://pythonexample.com/code/prim-minimum-spanning-tree-algorithm-python/
               https://gist.github.com/vevurka/539d82eb0ba60c16aa8aa65610c627df  
 """
+# A recursive python program to find LCA of two Nodes
+# n1 and n2
+
+# Tree Node
+class Node:
+
+    # Constructor to create a new Node
+    def __init__(self, Data):
+        self.Data = Data
+        self.left = None
+        self.right = None
+
+class BiSTree(object):
+    def __init__(self, root):
+        #super(BiSTree, self).__init__() should I use this Atom auto populated it?
+        self.root = Node(root)
+
+# Tree
+def formT(t, n):
+    if T and n in T:
+        c = T[n]
+        for i, cnode in enumerate(c):
+            if cnode == 1:
+                t.insert(i)
+                formT(t, i)
+
+# Function to find LCA of n1 and n2.
+def LowestCA(root, n1, n2):
+
+    # Base Case
+    if root is None:
+        return None
+
+# root greater than n1,n2 left
+    if(root.Data > n1 and root.Data > n2):
+        return LowestCA(root.left, n1, n2)
+
+# root less than n1,n2 right
+    if(root.Data < n1 and root.Data < n2):
+        return LowestCA(root.right, n1, n2)
+
+    return root
+
+# Driver program to test above function
+
+# Let us construct the BST shown in the figure
+def question4(T, r, n1, n2):
+
+    # tree
+    t = BiSTree(r)
+
+
+    # LowestCA
+    return LowestCA(t.root, n1, n2)
+
+# First testcase
+T = [[0, 1, 0, 0, 0],
+     [0, 0, 0, 0, 0],
+     [0, 0, 0, 0, 0],
+     [1, 0, 0, 0, 1],
+     [0, 0, 0, 0, 0]]
+r = 3
+n1 = 1
+n2 = 4
+
+print question4(T, r, n1, n2).Data
+# Should return 3
+
+# EdgeCase one
+T = None
+r = 1
+n1 = 3
+n2 = 2
+
+print question4(T, r, n1, n2)
+# Should return None
+
+# Third testcase
+T = [[0, 0, 0, 0, 0],
+     [0, 0, 0, 0, 0],
+     [1, 0, 0, 1, 0],
+     [0, 0, 0, 0, 0],
+     [1, 0, 1, 0, 0]]
+r = 4
+n1 = 1
+n2 = 4
+
+print question4(T, r, n1, n2).Data
+# Should return 4
+
+# Fourth testcase EdgeCase unusually large
+T = [[0, 0, 0, 0, 0],
+     [0, 0, 0, 0, 0],
+     [1, 0, 0, 1, 0],
+     [0, 0, 0, 0, 0],
+     [1, 0, 1, 0, 0]]
+r = 4
+n1 = 200
+n2 = 200
+
+print question4(T, r, n1, n2)
+# Should return None
+
+# This code is contributed by Nikhil Kumar Singh(nickzuck_007) from 
+# https://www.geeksforgeeks.org/lowest-common-ancestor-in-a-binary-search-tree/
+# http://www.openbookproject.net/thinkcs/python/english2e/ch21.html
+
