@@ -209,7 +209,7 @@ def formT(t, n):
 # Function to find LCA of n1 and n2.
 def LowestCA(root, n1, n2):
 
-    # Base Case
+    # checks to see if root is none
     if root is None:
         return None
 
