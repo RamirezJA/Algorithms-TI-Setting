@@ -289,3 +289,78 @@ print question4(T, r, n1, n2)
 # https://www.geeksforgeeks.org/lowest-common-ancestor-in-a-binary-search-tree/
 # http://www.openbookproject.net/thinkcs/python/english2e/ch21.html
 
+# Python program to find m'th node from end using slow
+# and fast pointer
+
+# Node class
+class Node:
+
+    # Constructor to initialize the node object
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+
+    # Function to initialize head
+    def __init__(self):
+        self.head = None
+
+    # Function to insert a new node at the beginning
+    def push(self, new_data):
+        new_node = Node(new_data)
+        new_node.next = self.head
+        self.head = new_node
+
+    def MthFromLast(self, m):
+        main_ptr = self.head
+        ref_ptr = self.head
+
+        count  = 0
+        if(self.head is not None):
+            while(count < m ):
+                if(ref_ptr is None):
+                    print "%d is greater than the no. of nodes in list" %(m)
+                    return
+
+                ref_ptr = ref_ptr.next
+                count += 1
+
+        while(ref_ptr is not None):
+            main_ptr = main_ptr.next
+            ref_ptr = ref_ptr.next
+
+        return main_ptr
+        
+#function for q5
+def question5(ll, m):
+    while ll:
+        return ll.MthFromLast(m)
+
+
+# LinkedList
+ll = LinkedList()
+ll.push(1)
+ll.push(2)
+ll.push(3)
+ll.push(4)
+ll.push(5)
+
+# First testcase
+m = 3
+response = question5(ll, m)
+print "%drd number from the end is %d " %(m, response.data)
+#Should print out 3rd number from the end is 3
+
+#edge case 1 printed from line 32
+m = 300
+response = question5(ll, m)
+#Should print 300 is greater than the no. of nodes in list
+#edge case 2 
+ll = None
+m = 1
+response = question5(ll, m)
+print "%sst number from the end is %s " %(m, response)
+#Should print 1st number from the end is None
+
+# This code is contributed by Nikhil Kumar Singh(nickzuck_007)
