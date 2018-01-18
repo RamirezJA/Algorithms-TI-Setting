@@ -223,9 +223,7 @@ def LowestCA(root, n1, n2):
 
     return root
 
-# Driver program to test above function
-
-# Let us construct the BST shown in the figure
+# question4 function to get LCA
 def question4(T, r, n1, n2):
 
     # tree
