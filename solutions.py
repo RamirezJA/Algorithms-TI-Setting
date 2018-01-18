@@ -247,10 +247,14 @@ print question4(T, r, n1, n2).Data
 # Should return 3
 
 # EdgeCase one
-T = None
-r = 1
-n1 = 3
-n2 = 2
+T = [[0, 0, 0, 0, 0],
+     [0, 0, 0, 0, 0],
+     [1, 0, 0, 1, 0],
+     [0, 0, 0, 0, 0],
+     [1, 0, 1, 0, 0]]
+r = None
+n1 = 1
+n2 = 4
 
 print question4(T, r, n1, n2)
 # Should return None
