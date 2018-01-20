@@ -1,0 +1,2 @@
+Question 1:
+I decided to use a dictionary so that there would only be a few dictionary lookups, comparisons, addition and subtractions. The idea is to create a dictionary that is keyed by the letters of the first dictionary with frequency counts of the letters for the corresponding values. Because there are no nested loops and each pass through the main loop goes through the dictionary due to this the algorithm is linear O(n).
