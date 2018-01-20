@@ -366,3 +366,4 @@ print "%sst number from the end is %s " %(m, response)
 
 print "End of question5"
 # This code is contributed by Nikhil Kumar Singh(nickzuck_007)
+# https://www.geeksforgeeks.org/nth-node-from-the-end-of-a-linked-list/
