@@ -49,6 +49,7 @@ print question1("uiy", "udacity")
 # Test case 4 unusually long
 print question1("rove", "stack overflow is really cool")
 #True
+print "End of question1"
 
 #Question 2
 #creates an empty dictionary
@@ -65,10 +66,10 @@ def question2(string):
         right = question2(string[1:])
         iterate = [left, right]
         #finding max using len
-        store[string] = max(iterate, key=len) 
+        store[string] = max(iterate, key=len)
         return store[string]
 
-#Test Case 1 
+#Test Case 1
 print question2('forgeeksskeegfor')
 #Expected output: geeksskeeg
 #Test Case 2 unusually long
@@ -77,6 +78,8 @@ print question2('alskdjfj laksjd flkajs racecar idk lol')
 #Test Case 3 blank
 print question2('')
 #Expected output: blank
+
+print "End of question2"
 
 # http://codegist.net/code/find-longest-palindrome-in-a-store-python/
 
@@ -130,7 +133,7 @@ G = {
         }
 
 print "Test case one"
-print(question3(G)) 
+print(question3(G))
 #Expected Output [(1, 'A', 'C'), (2, 'A', 'B'), (3, 'B', 'D'), (3, 'C', 'E')]
 
 G = {
@@ -145,7 +148,7 @@ G = {
         }
 
 print "test case two"
-print(question3(G)) 
+print(question3(G))
 #Expected Output [(1, 'A', 'B'), (1, 'A', 'C'), (1, 'B', 'D'), (1, 'C', 'E')]
 
 
@@ -175,18 +178,18 @@ print(question3(G))
 Expected Output [(1, 'A', 'B'), (1, 'F', 'D'), (1, 'G', 'I'), (1, 'L', 'J'), (2, 'B', 'E'), (2, 'H', 'F'), (2, 'I', 'K'),
 (2, 'N', 'O'), (3, 'A', 'C'), (3, 'D', 'C'), (3, 'J', 'H'), (4, 'K', 'N'), (5, 'E', 'G')]
 """
-
+print "End of question3"
 """
 Attributioon: https://pythonexample.com/code/prim-minimum-spanning-tree-algorithm-python/
-              https://gist.github.com/vevurka/539d82eb0ba60c16aa8aa65610c627df  
+              https://gist.github.com/vevurka/539d82eb0ba60c16aa8aa65610c627df
 """
-# A recursive python program to find LCA of two Nodes
-# n1 and n2
 
-# Tree Node
+# Question 4
+
+# BT node
 class Node:
 
-    # Constructor to create a new Node
+    # Constructor new Node
     def __init__(self, Data):
         self.Data = Data
         self.left = None
@@ -194,7 +197,6 @@ class Node:
 
 class BiSTree(object):
     def __init__(self, root):
-        #super(BiSTree, self).__init__() should I use this Atom auto populated it?
         self.root = Node(root)
 
 # Tree
@@ -206,7 +208,7 @@ def formT(t, n):
                 t.insert(i)
                 formT(t, i)
 
-# Function to find LCA of n1 and n2.
+# Function for LCA of n1 and n2.
 def LowestCA(root, n1, n2):
 
     # checks to see if root is none
@@ -228,7 +230,6 @@ def question4(T, r, n1, n2):
 
     # tree
     t = BiSTree(r)
-
 
     # LowestCA
     return LowestCA(t.root, n1, n2)
@@ -284,14 +285,13 @@ n2 = 200
 
 print question4(T, r, n1, n2)
 # Should return None
+print "End of question4"
 
-# This code is contributed by Nikhil Kumar Singh(nickzuck_007) from 
+# This code is contributed by Nikhil Kumar Singh(nickzuck_007) from
 # https://www.geeksforgeeks.org/lowest-common-ancestor-in-a-binary-search-tree/
 # http://www.openbookproject.net/thinkcs/python/english2e/ch21.html
 
-# Python program to find m'th node from end using slow
-# and fast pointer
-
+# Question 5
 # Node class
 class Node:
 
@@ -331,7 +331,7 @@ class LinkedList:
             ref_ptr = ref_ptr.next
 
         return main_ptr
-        
+
 #function for q5
 def question5(ll, m):
     while ll:
@@ -356,11 +356,13 @@ print "%drd number from the end is %d " %(m, response.data)
 m = 300
 response = question5(ll, m)
 #Should print 300 is greater than the no. of nodes in list
-#edge case 2 
+
+#edge case 2
 ll = None
 m = 1
 response = question5(ll, m)
 print "%sst number from the end is %s " %(m, response)
 #Should print 1st number from the end is None
 
+print "End of question5"
 # This code is contributed by Nikhil Kumar Singh(nickzuck_007)
