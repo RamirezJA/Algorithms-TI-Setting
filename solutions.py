@@ -1,101 +1,114 @@
-#Question 1
-def question1(s,t):
+# Question 1
+def question1(s, t):
     m = len(s)
     n = len(t)
-    if m > n: return false
-    target = dict.fromkeys(s,0)
-    for c in s: target[c] += 1
+    if m > n:
+        return false
+    target = dict.fromkeys(s, 0)
+    for c in s:
+        target[c] += 1
 
-    #process initial window
+    # process initial window
     for i in range(m):
         c = t[i]
         if c in target:
             target[c] -= 1
     discrepancy = sum(abs(target[c]) for c in target)
 
-    #repeatedly check then slide:
-    for i in range(m,n):
+    # repeatedly check then slide:
+    for i in range(m, n):
         if discrepancy == 0:
             return True
         else:
-            #first process letter from m steps ago from t
+            # first process letter from m steps ago from t
             c = t[i-m]
             if c in target:
                 target[c] += 1
-                if target[c] > 0: #just made things worse
-                    discrepancy +=1
+                if target[c] > 0:  # just made things worse
+                    discrepancy += 1
                 else:
-                    discrepancy -=1
-            #now process new letter:
+                    discrepancy -= 1
+            # now process new letter:
             c = t[i]
             if c in target:
                 target[c] -= 1
-                if target[c] < 0: #just made things worse
+                if target[c] < 0:  # just made things worse
                     discrepancy += 1
                 else:
-                    discrepancy -=1
-    #if you get to this stage:
+                    discrepancy -= 1
+    # if you get to this stage:
     return discrepancy == 0
 
 # Test case 1 checking for anagram in subject
 print question1("ad", "udacity")
-#True
+# True
 # Test case 2 with empty string
 print question1("", "udacity")
-#True
+# True
 # Test case 3 using words in subject but not in order
 print question1("uiy", "udacity")
-#False
+# False
 # Test case 4 unusually long
 print question1("rove", "stack overflow is really cool")
-#True
+# True
 print "End of question1"
-
-#Question 2
-#creates an empty dictionary
+"""
+Attribution:
+https://stackoverflow.com/questions/32069724/anagram-of-string-2-is-substring-of-string-1
+"""
+# Question 2
+# creates an empty dictionary
 store = {}
+
+
 def question2(string):
     if string in store.keys():
         return store[string]
-    #returns string if its a palindrome
+    # returns string if its a palindrome
     if string == string[::-1]:
         return string
     else:
-        #goes trough string items from left to right
+        # goes trough string items from left to right
         left = question2(string[:-1])
         right = question2(string[1:])
         iterate = [left, right]
-        #finding max using len
+        # finding max using len
         store[string] = max(iterate, key=len)
         return store[string]
 
-#Test Case 1
+# Test Case 1
 print question2('forgeeksskeegfor')
-#Expected output: geeksskeeg
-#Test Case 2 unusually long
+# Expected output: geeksskeeg
+# Test Case 2 unusually long
 print question2('alskdjfj laksjd flkajs racecar idk lol')
-#Expected output: racecar
-#Test Case 3 blank
+# Expected output: racecar
+# Test Case 3 blank
 print question2('')
-#Expected output: blank
+# Expected output: blank
 
 print "End of question2"
 
 # http://codegist.net/code/find-longest-palindrome-in-a-store-python/
 
-#Question 3 using Kruskal algorithm
+# Question 3 using Kruskal algorithm
 parent = dict()
 sort = dict()
-#creates a batch of vertices
+# creates a batch of vertices
+
+
 def create_batch(vert):
     parent[vert] = vert
     sort[vert] = 0
-#locates vertices
+# locates vertices
+
+
 def locate(vert):
     if parent[vert] != vert:
         parent[vert] = locate(parent[vert])
     return parent[vert]
-#creates unions
+# creates unions
+
+
 def union(vert1, vert2):
     root1 = locate(vert1)
     root2 = locate(vert2)
@@ -104,9 +117,12 @@ def union(vert1, vert2):
             parent[root2] = root1
         else:
             parent[root1] = root2
-            if sort[root1] == sort[root2]: sort[root2] += 1
+            if sort[root1] == sort[root2]:
+                sort[root2] += 1
 
-#Using Kruskal algorithm
+
+# Using Kruskal algorithm
+
 def question3(G):
     for vert in G['verts']:
         create_batch(vert)
@@ -134,7 +150,7 @@ G = {
 
 print "Test case one"
 print(question3(G))
-#Expected Output [(1, 'A', 'C'), (2, 'A', 'B'), (3, 'B', 'D'), (3, 'C', 'E')]
+# Expected Output [(1, 'A', 'C'), (2, 'A', 'B'), (3, 'B', 'D'), (3, 'C', 'E')]
 
 G = {
         'verts': ['A', 'B', 'C', 'D', 'E'],
@@ -149,11 +165,15 @@ G = {
 
 print "test case two"
 print(question3(G))
-#Expected Output [(1, 'A', 'B'), (1, 'A', 'C'), (1, 'B', 'D'), (1, 'C', 'E')]
+# Expected Output [(1, 'A', 'B'), (1, 'A', 'C'), (1, 'B', 'D'), (1, 'C', 'E')]
 
 
 G = {
-        'verts': ['A', 'B', 'C', 'D', 'E','F', 'G', 'H', 'I','J','K', 'L', 'N', 'O',],
+        'verts': [
+            'A', 'B', 'C', 'D', 'E',
+            'F', 'G', 'H', 'I', 'J',
+            'K', 'L', 'N', 'O',
+            ],
         'edges': set([
             (1, 'A', 'B'),
             (3, 'A', 'C'),
@@ -175,18 +195,24 @@ G = {
 print "test case three unusually long"
 print(question3(G))
 """
-Expected Output [(1, 'A', 'B'), (1, 'F', 'D'), (1, 'G', 'I'), (1, 'L', 'J'), (2, 'B', 'E'), (2, 'H', 'F'), (2, 'I', 'K'),
-(2, 'N', 'O'), (3, 'A', 'C'), (3, 'D', 'C'), (3, 'J', 'H'), (4, 'K', 'N'), (5, 'E', 'G')]
+Expected Output [(1, 'A', 'B'), (1, 'F', 'D'),
+(1, 'G', 'I'), (1, 'L', 'J'), (2, 'B', 'E'),
+(2, 'H', 'F'), (2, 'I', 'K'), (2, 'N', 'O'),
+(3, 'A', 'C'), (3, 'D', 'C'), (3, 'J', 'H'),
+(4, 'K', 'N'), (5, 'E', 'G')]
 """
 print "End of question3"
 """
-Attributioon: https://pythonexample.com/code/prim-minimum-spanning-tree-algorithm-python/
-              https://gist.github.com/vevurka/539d82eb0ba60c16aa8aa65610c627df
+Attributioon:
+https://pythonexample.com/code/prim-minimum-spanning-tree-algorithm-python/
+https://gist.github.com/vevurka/539d82eb0ba60c16aa8aa65610c627df
 """
 
 # Question 4
 
 # BT node
+
+
 class Node:
 
     # Constructor new Node
@@ -195,9 +221,11 @@ class Node:
         self.left = None
         self.right = None
 
+
 class BiSTree(object):
     def __init__(self, root):
         self.root = Node(root)
+
 
 # Tree
 def formT(t, n):
@@ -209,6 +237,8 @@ def formT(t, n):
                 formT(t, i)
 
 # Function for LCA of n1 and n2.
+
+
 def LowestCA(root, n1, n2):
 
     # checks to see if root is none
@@ -224,6 +254,7 @@ def LowestCA(root, n1, n2):
         return LowestCA(root.right, n1, n2)
 
     return root
+
 
 # question4 function to get LCA
 def question4(T, r, n1, n2):
@@ -291,6 +322,7 @@ print "End of question4"
 # https://www.geeksforgeeks.org/lowest-common-ancestor-in-a-binary-search-tree/
 # http://www.openbookproject.net/thinkcs/python/english2e/ch21.html
 
+
 # Question 5
 # Node class
 class Node:
@@ -299,6 +331,7 @@ class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
+
 
 class LinkedList:
 
@@ -316,11 +349,11 @@ class LinkedList:
         main_ptr = self.head
         ref_ptr = self.head
 
-        count  = 0
+        count = 0
         if(self.head is not None):
-            while(count < m ):
+            while(count < m):
                 if(ref_ptr is None):
-                    print "%d is greater than the no. of nodes in list" %(m)
+                    print "%d is greater than the no. of nodes in list" % (m)
                     return
 
                 ref_ptr = ref_ptr.next
@@ -332,7 +365,9 @@ class LinkedList:
 
         return main_ptr
 
-#function for q5
+# function for q5
+
+
 def question5(ll, m):
     while ll:
         return ll.MthFromLast(m)
@@ -349,20 +384,20 @@ ll.push(5)
 # First testcase
 m = 3
 response = question5(ll, m)
-print "%drd number from the end is %d " %(m, response.data)
-#Should print out 3rd number from the end is 3
+print "%drd number from the end is %d " % (m, response.data)
+# Should print out 3rd number from the end is 3
 
-#edge case 1 printed from line 32
+# edge case 1 printed from line 32
 m = 300
 response = question5(ll, m)
-#Should print 300 is greater than the no. of nodes in list
+# Should print 300 is greater than the no. of nodes in list
 
-#edge case 2
+# edge case 2
 ll = None
 m = 1
 response = question5(ll, m)
-print "%sst number from the end is %s " %(m, response)
-#Should print 1st number from the end is None
+print "%s st number from the end is %s " % (m, response)
+# Should print 1st number from the end is None
 
 print "End of question5"
 # This code is contributed by Nikhil Kumar Singh(nickzuck_007)
