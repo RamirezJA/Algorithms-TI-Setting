@@ -383,20 +383,18 @@ ll.push(5)
 
 # First testcase
 m = 3
-response = question5(ll, m)
-print "%drd number from the end is %d " % (m, response.data)
+print "%drd number from the end is %d " % (m, question5(ll, m).data)
 # Should print out 3rd number from the end is 3
 
 # edge case 1 printed from line 32
 m = 300
-response = question5(ll, m)
+question5(ll, m)
 # Should print 300 is greater than the no. of nodes in list
 
 # edge case 2
 ll = None
 m = 1
-response = question5(ll, m)
-print "%s st number from the end is %s " % (m, response)
+print "%s st number from the end is %s " % (m, question5(ll, m))
 # Should print 1st number from the end is None
 
 print "End of question5"
