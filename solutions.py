@@ -87,7 +87,8 @@ print question2('')
 # Expected output: blank
 
 print "End of question2"
-
+# https://www.geeksforgeeks.org/longest-palindromic-substring-set-2/
+# https://www.geeksforgeeks.org/manachers-algorithm-linear-time-longest-palindromic-substring-part-1/
 # http://codegist.net/code/find-longest-palindrome-in-a-store-python/
 
 # Question 3 using Kruskal algorithm
@@ -398,5 +399,5 @@ print "%s st number from the end is %s " % (m, question5(ll, m))
 # Should print 1st number from the end is None
 
 print "End of question5"
-# This code is contributed by Nikhil Kumar Singh(nickzuck_007)
+# This code is contributed by Nikhil Kumar Singh(nickzuck_007) from
 # https://www.geeksforgeeks.org/nth-node-from-the-end-of-a-linked-list/
