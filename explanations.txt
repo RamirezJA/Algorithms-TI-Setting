@@ -4,3 +4,7 @@ I decided to use a dictionary so that there would only be a few dictionary looku
 Question2:
 
 The program uses the dictionary data structure because I felt it would be the most efficient in storing the string given and I could also easily check to see if the string itself was the longest palindrome by using "[::-1]:" to check it in reverse. The efficiency of the solution is O(n) because the program has to scan the conditions until the proper one is met. The worst case scenario would be that it has to run all three statements max(time(sequence 1), time(sequence 2), time(sequence 3)) and it would be O(n).
+
+Question3: 
+
+This problem can be solved using two famous algorithms prims or Kruskal's I decided to go with Kruskal's which is a greedy algorithm. Kruskal's first sorts the graph edges based on their weights, then it adds edges of the minimum spanning tree from the smallest weight to the largest weight. It only adds edges which do not form a cycle. For the edges, I decided to use a list as the data structure. For the MST I decided to use the set() function when adding the edges.  In regards to efficiency, it is O(ELogV) because we are taking in a random order and finding and fixing the order of the edges based on weight and their vertices.
