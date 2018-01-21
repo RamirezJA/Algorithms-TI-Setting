@@ -12,3 +12,7 @@ This problem can be solved using two famous algorithms prims or Kruskal's I deci
 Question4: 
 
 This problem uses the Binary Search Tree data structure in order to find the Lowest Common Ancestor. T is the tree and the lowest common ancestor between two nodes n1 and n2 is defined as the lowest node in T that has both n1 and n2 as descendants. A node is allowed to be a descendant of itself. The tree is traversed recursively from the root. The idea being that traversing and if the value of the node is greater than both n1 and n2 the LCA lies to the left side and if its smaller than n1 and n2 LCA is on the right side. Otherwise, the root is LCA as long as both n1 and n2 are in the tree. In regards to efficiency, the formation of the tree is O(n^2) n being the vertices. The time complexity for the height of the tree is 0(h).
+
+Question5:
+
+This question uses the singly linked list data structure. The problem asked that a singly linked list be used in order to find the element in a singly linked list that's m elements from the end. In order to solve this problem, two pointers are maintained a reference pointer and a main pointer.  Reference and main pointers initialize to head. The reference pointer moves first to m nodes from the head. Then both pointers move one by one until reference pointer gets to end. The main pointer will point to mth node from the end. The time complexity is O(n) where n is the length of the linked list.
