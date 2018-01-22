@@ -1,4 +1,4 @@
-# Technical-Interview-Practice
+# Algortithm Questions
 Five technical interviewing questions on a variety of topics discussed in the technical interviewing course.
 
 ## Question 1
